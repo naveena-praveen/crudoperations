@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration form</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <!-- Sign up form -->
+    <div class="main">
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Welcome Home!!,   &nbsp;   {{ user.username }}  </h2><br>
+                        <!-- <h4 class="form-title"><i>You have Registred in the name of :  {{ user.first_name }}  {{ user.last_name }} with the mail id {{ user.email }}  </i>     </h4> -->
+
+                        {% if not user.is_authenticated %}
+                        <!-- login -->
+                        <a href="{% url 'login' %}">
+                            {% csrf_token %}
+                            <div class="form-group form-button">
+                                <input type="submit" name="login" class="form-submit" value="Login" />
+                            </div>
+                        </a>
+                        <!-- register -->
+                        <a href="{% url 'register' %}">
+                            {% csrf_token %}
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" class="form-submit" value="SignUp" />
+                            </div>
+                        </a>
+                        <!-- admin sigin button -->
+                        <a href="{% url 'admin_login' %}">
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" class="form-submit" value="admin LogIn" />
+                            </div>
+                        </a>
+                        {% else %}
+                        <!-- signout -->
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %} 
+                            <div class="form-group form-button">
+                                <input type="submit" name="signout" class="form-submit" value="Signout" />
+                            </div>
+                        </form> 
+                        {% endif %}
+                        {% if messages %}
+
+                        {% for message in messages %}
+                        {{ user.username}}  {{  message }}
+                        {% endfor %}
+                        {% endif %}
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>

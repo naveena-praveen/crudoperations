@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Star Admin2 </title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{% static 'assets/vendors/feather/feather.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/ti-icons/css/themify-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/font-awesome/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/typicons/typicons.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/simple-line-icons/css/simple-line-icons.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css' %}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{% static 'assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/js/select.dataTables.min.css' %}">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="{% static 'assets/images/favicon.png' %}" />
+</head>
+
+<body class="with-welcome-text">
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-top">
+        <ul class="navbar-nav">
+          <li class="nav-item fw-semibold d-none d-lg-block ms-0">
+            <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold"></span></h1>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="home-tab">
+                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab"
+                        aria-controls="overview" aria-selected="true">Overview</a>
+                    </li>
+                  </ul>
+                  <div>
+                  </div>
+                </div>
+                <div class="tab-content tab-content-basic">
+                  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
+                    <div class="row">
+                      <div class="col-lg-19 d-flex flex-column">
+                        <div class="row flex-grow">
+                          <div class="col-12 grid-margin stretch-card">
+                            <div class="card card-rounded">
+                              <div class="card-body">
+                                <div class="d-sm-flex justify-content-between align-items-start">
+                                  <div>
+                                    <h4 class="card-title card-title-dash">Pending Requests</h4>
+                                    <p class="card-subtitle card-subtitle-dash">You have 50+ new requests</p>
+                                  </div>
+                                  <div>
+                                    <button class="btn btn-success btn-lg text-white mb-0 me-0" type="button"><i
+                                        class="mdi mdi-account-plus"></i>Add new member</button>
+                                  </div>
+                                </div>
+                                <div class="table-responsive  mt-1">
+                                  <table class="table select-table">
+                                    <thead>
+                                     
+                                    
+                                      
+                                      <tr>
+                                        
+                                        
+                                        <th>User ID</th>
+                                        <th>Last Name</th>
+                                        <th>User Name</th>
+                                        <th>User email</th>
+                                        <th> </th>
+                                        <th> </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {% for user in users %}
+                                      <tr>
+                                        <td>
+                                          <div class="form-check form-check-flat mt-0">
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <div>
+                                              <h6>{{ user.id }}</h6>
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <div>
+                                              <h6>{{ user.first_name }} </h6>
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <div>
+                                              <h6>{{ user.last_name }}</h6>
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <div>
+                                              <h6>{{ user.username }}</h6>
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <div>
+                                              <h6>{{ user.email }}</h6>
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button"><i
+                                                class="mdi mdi-account-plus"></i>Update User</button>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <button class="btn btn-danger btn-lg text-white mb-0 me-0" type="button"><i
+                                                class="mdi mdi-account-plus"></i>Delete User</button>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                      {% endfor %}
+                                    </tbody>
+                                  </table>
+
+                                </div>
+
+                              </div>
+                            </div>
+
+                          </div>
+                          <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %} 
+                            <div class="d-flex">
+                              <button class="btn btn-secondary btn-lg text-white mb-0 me-0" type="submit" name="signout" 
+                              class="form-signout" value="Signout">
+                                <i class="mdi mdi-account-plus"></i> Signout
+                            </button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
